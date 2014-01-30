@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" ng-app="asanaToolsApp">
+<head>
+  <meta charset="utf-8">
+  <title>Asana Tools</title>
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <script src="lib/angular/angular.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/jquery-2.1.0.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+</head>
+
+<body ng-controller="AuthCtrl">
+
+	<div class="row">
+		<div class="col-md-offset-5">
+            <h2>Asana Tools</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-offset-3">
+            <form class="navbar-form navbar-left" ng-submit="saveAuth()">
+                <div class="input-group">
+                    <input type="text" ng-model="apiKey" placeholder="paste your api key here!" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Auth</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-offset-3">
+        	<div class="btn-group">
+  				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    				Workspace <span class="caret"></span>
+  				</button>
+  				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li ng-if="!workspaces.data"><font style="padding-left:10px;">Authenticate first!</font></li>
+  					<li ng-repeat="workspace in workspaces.data">
+                		<a ng-controller="ListTasksCtrl" ng-click="listTasks()" href="#">{{workspace.name}}</a>
+                	</li>
+  				</ul>
+			</div>
+        </div>
+    </div>
+    <div class="row">
+        <table>
+            <tr ng-controller="ListTasksCtrl" ng-repeat="task in tasks.data">
+                <td>{{task.id}}</td>
+                <td>{{task.name}}</td>
+            </tr>
+        </table>
+    </div>
+    
+    
+</body>
+
+</html>
