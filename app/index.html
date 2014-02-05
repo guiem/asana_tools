@@ -11,7 +11,7 @@
   <script src="js/bootstrap.js"></script>
 </head>
 
-<body ng-controller="AuthCtrl">
+<body ng-controller="MainCtrl">
 
 	<div class="row">
 		<div class="col-md-offset-5">
@@ -39,7 +39,8 @@
   				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     <li ng-if="!workspaces.data"><font style="padding-left:10px;">Authenticate first!</font></li>
   					<li ng-repeat="workspace in workspaces.data">
-                		<a ng-controller="ListTasksCtrl" ng-click="listTasks()" href="#">{{workspace.name}}</a>
+                		<a ng-click="listTasks()" href="#">{{workspace.name}}
+                        </a>
                 	</li>
   				</ul>
 			</div>
@@ -47,7 +48,7 @@
     </div>
     <div class="row">
         <table>
-            <tr ng-controller="ListTasksCtrl" ng-repeat="task in tasks.data">
+            <tr ng-repeat="task in tasks.data">
                 <td>{{task.id}}</td>
                 <td>{{task.name}}</td>
             </tr>
