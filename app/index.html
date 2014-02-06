@@ -13,12 +13,12 @@
 
 <body ng-controller="MainCtrl">
 
-	<div class="row">
+	<div class="row"> <!-- first row -->
 		<div class="col-md-offset-5">
             <h2>Asana Tools</h2>
         </div>
-    </div>
-    <div class="row">
+    </div> <!-- end first row -->
+    <div class="row"> <!-- second row -->
         <div class="col-lg-6 col-md-offset-3">
             <form class="navbar-form navbar-left" ng-submit="saveAuth()">
                 <div class="input-group">
@@ -29,8 +29,8 @@
                 </div>
             </form>
         </div>
-    </div>
-    <div class="row">
+    </div><!-- end second row -->
+    <div class="row"><!-- third row -->
         <div class="col-md-offset-3">
         	<div class="btn-group">
   				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -39,13 +39,26 @@
   				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     <li ng-if="!workspaces.data"><font style="padding-left:10px;">Authenticate first!</font></li>
   					<li ng-repeat="workspace in workspaces.data">
-                		<a ng-click="listTasks()" href="#">{{workspace.name}}
+                		<a ng-click="getProjects(workspace.id,workspace.name)" href="#">{{workspace.name}}
                         </a>
                 	</li>
   				</ul>
 			</div>
+            <div class="btn-group">
+  				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    				Project <span class="caret"></span>
+  				</button>
+  				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li ng-if="!projects.data"><font style="padding-left:10px;">Workspace first!</font></li>
+  					<li ng-repeat="project in projects.data">
+                		<a ng-click="listTasks(project.id,project.name)" href="#">{{project.name}}
+                        </a>
+                	</li>
+  				</ul>
+			</div>
+            <text class="col-md-offset-1">Your query --> workspace : <text ng-if="!workspace">None</text><strong>{{workspace}}</strong> & project : <text ng-if="!project">None</text><strong>{{project}}</strong></text>
         </div>
-    </div>
+    </div><!-- end third row -->
     <div class="row">
         <table>
             <tr ng-repeat="task in tasks.data">
@@ -54,7 +67,6 @@
             </tr>
         </table>
     </div>
-    
     
 </body>
 
