@@ -19,7 +19,7 @@
         </div>
     </div> <!-- end first row -->
     <div class="row"> <!-- second row -->
-        <div class="col-lg-6 col-md-offset-3">
+        <div class="col-md-6 col-md-offset-3">
             <form class="navbar-form navbar-left" ng-submit="saveAuth()">
                 <div class="input-group">
                     <input type="text" ng-model="apiKey" placeholder="paste your api key here!" class="form-control">
@@ -56,18 +56,44 @@
                 	</li>
   				</ul>
 			</div>
-            <text class="col-md-offset-1">Your query --> workspace : <text ng-if="!workspace">None</text><strong>{{workspace}}</strong> & project : <text ng-if="!project">None</text><strong>{{project}}</strong></text>
         </div>
     </div><!-- end third row -->
+    <div>&nbsp;</div>
     <div class="row">
-        <table>
-            <tr ng-repeat="task in tasks.data">
-                <td>{{task.id}}</td>
-                <td>{{task.name}}</td>
-            </tr>
-        </table>
+        <div class="col-md-offset-3">
+            <h4>
+                <text>Tasks in <text ng-if="workspace">workspace <strong style="color:rgb(30,145,220)">{{workspace}}</strong><text ng-if="project"> project <strong style="color:rgb(30,145,220)">{{project}}</strong></text>
+            </h4>
+        </div>
     </div>
-    
+    <div>&nbsp;</div>
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6 table-responsive">
+            <table class="table table-hover">
+                <tr ng-repeat="task in tasks.data">
+                    <td ng-click="setTask(task.id)" data-toggle="modal" data-target=".bs-modal-sm">{{task.name}}</td>
+                    <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="row" ng-if="current_task.data.name">
+                                    <strong>Name</strong>: {{current_task.data.name}}</div>
+                                <div class="row" ng-if="current_task.data.notes">
+                                    <strong>Notes</strong>: {{current_task.data.notes}}</div>
+                                <div class="row" ng-if="current_task.data.completed">
+                                    <strong>Completed</strong>: {{current_task.data.completed}}</div>
+                                <div class="row" ng-if="current_task.data.completed_at">
+                                    <strong>Completed at</strong>: {{current_task.data.completed_at}}</div>
+                                <div class="row" ng-if="current_task.data.assignee.name">
+                                    <strong>Assignee</strong>: {{current_task.data.assignee.name}}</div>
+                                <div class="row" ng-if="current_task.data.notes">
+                                    <strong>Status</strong>: {{current_task.data.assignee_status}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

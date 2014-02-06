@@ -27,5 +27,11 @@ function MainCtrl($scope,$rootScope,$http) {
                                                       $scope.tasks = data;
                                                       });
     }
+    
+    $scope.setTask = function(taskId) {
+        $http.get(asanaBaseUrl+'/tasks/'+taskId).success(function(data) {
+            $scope.current_task = data;
+                                                                  });
+    }
 }
 
