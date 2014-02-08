@@ -71,22 +71,32 @@
         <div class="col-md-offset-3 col-md-6 table-responsive">
             <table class="table table-hover">
                 <tr ng-repeat="task in tasks.data">
-                    <td ng-click="setTask(task.id)" data-toggle="modal" data-target=".bs-modal-sm">{{task.name}}</td>
+                    <td ng-click="setTask(task.id)" data-toggle="modal" data-target=".bs-modal-sm">{{task.name}}
+                    </td>
                     <div class="modal fade bs-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-sm">
                             <div class="modal-content">
-                                <div class="row" ng-if="current_task.data.name">
-                                    <strong>Name</strong>: {{current_task.data.name}}</div>
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">{{current_task.data.name}}</h4>
+                                </div>
                                 <div class="row" ng-if="current_task.data.notes">
-                                    <strong>Notes</strong>: {{current_task.data.notes}}</div>
+                                    <strong>Notes</strong>: {{current_task.data.notes}}
+                                </div>
                                 <div class="row" ng-if="current_task.data.completed">
-                                    <strong>Completed</strong>: {{current_task.data.completed}}</div>
+                                    <strong>Completed</strong>: {{current_task.data.completed}}
+                                </div>
                                 <div class="row" ng-if="current_task.data.completed_at">
-                                    <strong>Completed at</strong>: {{current_task.data.completed_at}}</div>
+                                    <strong>Completed at</strong>: {{current_task.data.completed_at}}
+                                </div>
                                 <div class="row" ng-if="current_task.data.assignee.name">
-                                    <strong>Assignee</strong>: {{current_task.data.assignee.name}}</div>
+                                    <strong>Assignee</strong>: {{current_task.data.assignee.name}}
+                                </div>
                                 <div class="row" ng-if="current_task.data.notes">
-                                    <strong>Status</strong>: {{current_task.data.assignee_status}}</div>
+                                    <strong>Status</strong>: {{current_task.data.assignee_status}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
