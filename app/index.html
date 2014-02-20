@@ -21,6 +21,10 @@
             <h2>Asana Tools</h2>
         </div>
     </div> <!-- end first row -->
+    {% if not user.api_key %}
+    {{user}}
+    lalo
+    {{user.api_key}}
     <div class="row"> <!-- second row -->
         <div class="col-md-6 col-md-offset-3">
             <form class="navbar-form navbar-left" ng-submit="saveAuth()">
@@ -33,6 +37,7 @@
             </form>
         </div>
     </div><!-- end second row -->
+    {% endif %}
     <div class="row"><!-- third row -->
         <div class="col-md-offset-3">
         	<div class="btn-group">

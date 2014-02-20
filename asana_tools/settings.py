@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
+    'asana_tools',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,6 +58,8 @@ WSGI_APPLICATION = 'asana_tools.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+
+# launch local postgres 'postgres -D /usr/local/var/postgres/'
 
 DATABASES = {
     'default': {
@@ -92,6 +96,10 @@ TEMPLATE_DIRS = (
 STATICFILES_DIRS = (
                     os.path.join(PROJECT_PATH, "static"),
                     )
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+)
 
 try:
     from settings_local import *
